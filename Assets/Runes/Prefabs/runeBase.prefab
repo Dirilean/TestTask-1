@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 5342189119669034427}
   - component: {fileID: 2966227428675499763}
   - component: {fileID: 4075656979369335909}
+  - component: {fileID: 4296452476397261260}
   m_Layer: 0
   m_Name: runeBase
   m_TagString: Untagged
@@ -178,3 +179,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.953125, y: 0.953125}
   m_EdgeRadius: 0
+--- !u!114 &4296452476397261260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548097754502428727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323aa7e5d6726fd48bb508840c0c9948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

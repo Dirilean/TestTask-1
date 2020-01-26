@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 7548097754502428727, guid: a7f897fa37c7a3e419db1b937f024320,
         type: 3}
       propertyPath: m_Name
-      value: rune air
+      value: rune air Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f897fa37c7a3e419db1b937f024320, type: 3}

@@ -8,8 +8,4 @@ public class PoolObject : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    public void OnMouseDown()
-    {
-        ReturnToPool();
-    }
 }
