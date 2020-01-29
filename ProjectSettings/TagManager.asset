@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 427553975
+    locked: 0
   - name: Runes
     uniqueID: 1927070333
     locked: 0

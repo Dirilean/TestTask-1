@@ -11,11 +11,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2997031181239992936, guid: 48afce2589e3052418750b2e8d43e96b,
+      objectReference: {fileID: -539719522812852101, guid: 48afce2589e3052418750b2e8d43e96b,
         type: 3}
     - target: {fileID: 2966227428675499763, guid: a7f897fa37c7a3e419db1b937f024320,
         type: 3}
       propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075656979369335909, guid: a7f897fa37c7a3e419db1b937f024320,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075656979369335909, guid: a7f897fa37c7a3e419db1b937f024320,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5342189119669034427, guid: a7f897fa37c7a3e419db1b937f024320,
@@ -91,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 7548097754502428727, guid: a7f897fa37c7a3e419db1b937f024320,
         type: 3}
       propertyPath: m_Name
-      value: rune love
+      value: rune love Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f897fa37c7a3e419db1b937f024320, type: 3}

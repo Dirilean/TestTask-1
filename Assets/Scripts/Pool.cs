@@ -63,6 +63,17 @@ public class Pool : MonoBehaviour
         return newPoolingObj;
     }
 
+    public void ReturnAllToPool()
+    {
+        for (int i = 0; i < poolingObjects.Length; i++)
+        {
+            for (int t = 0; t <poolingObjects[i].listPoolObjects.Count; t++)
+            {
+                if (poolingObjects[i].listPoolObjects[t].gameObject.activeInHierarchy)
+                poolingObjects[i].listPoolObjects[t].ReturnToPool();
+            }
+        }
+    }
 
     [System.Serializable]
     public class PoolObjectType

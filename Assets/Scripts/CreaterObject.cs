@@ -38,6 +38,7 @@ public class CreaterObject : MonoBehaviour
             yield return null;
             element.OnMouseDrag();
         }
+        element.OnMouseUp();
     }
 
 }
