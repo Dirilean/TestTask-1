@@ -7,24 +7,37 @@ public class Deleting : MonoBehaviour
 {
     public static bool deleteMod = false;
 
-    public void ChangeDeleteMod(Button buttonDeleteMod)
+    public Button DeleteAnyButton;
+    public Button DeleteAllButton;
+
+    private void Start()
+    {
+        DeleteAnyButton.onClick.AddListener(()=>ChangeDeleteMod());
+        DeleteAllButton.onClick.AddListener(()=>DeleteAll());
+    }
+
+    public void ChangeDeleteMod()
     {
         deleteMod = !deleteMod;
         if (deleteMod)
         {
-            buttonDeleteMod.targetGraphic.color = buttonDeleteMod.colors.pressedColor;
+            DeleteAnyButton.targetGraphic.color = DeleteAnyButton.colors.pressedColor;
         }
         else
         {
-            buttonDeleteMod.targetGraphic.color = buttonDeleteMod.colors.normalColor;
+            DeleteAnyButton.targetGraphic.color = DeleteAnyButton.colors.normalColor;
         }
     }
 
     public void DeleteAll()
     {
+        if (deleteMod) ChangeDeleteMod();
+
         foreach (Rune rune in FindObjectsOfType<Rune>())
         {
             rune.Break();
         }
+
+        AudioManager.instance.PlaySoundOfBreak();
     }
 }

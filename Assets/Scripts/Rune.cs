@@ -8,10 +8,8 @@ public class Rune : DraggingElement
     ParticleSystem particle;
     Animator anim;
     private string animBool="Stay";
-    AudioSource auSourse;
-    private float MaxVolume=0.5f;
-    float riseSpeed = 10f;
-    IEnumerator fading;
+
+    public AudioClip clip;
     public GameObject breaking;
     SpriteRenderer curSprite;
     Light2D light;
@@ -20,7 +18,6 @@ public class Rune : DraggingElement
         base.Awake();
         particle = GetComponent<ParticleSystem>();
         anim = GetComponent<Animator>();
-        auSourse = GetComponent<AudioSource>();
         curSprite = GetComponent<SpriteRenderer>();
         light = GetComponentInChildren<Light2D>();
     }
@@ -34,25 +31,19 @@ public class Rune : DraggingElement
     {
         if (particle != null) particle.Play();
         if (anim != null) anim.SetBool("Stay", true);
-        if (auSourse != null)
+        if (clip != null)
         {
-            if (fading != null) StopCoroutine(fading);
-
-            fading = FadeSound(true);
-            StartCoroutine(fading);
+            AudioManager.instance.FadeSound(true, clip);
         }
     }
+
     private void OnMouseExit()
     {
         if (particle != null) particle.Stop();
         if (anim != null) anim.SetBool("Stay", false);
-        if (auSourse != null)
+        if (clip != null)
         {
-            if (fading != null) StopCoroutine(fading);
-
-            fading = FadeSound(false);
-            StartCoroutine(fading);
-
+            AudioManager.instance.FadeSound(false, clip);
         }
     }
 
@@ -74,30 +65,6 @@ public class Rune : DraggingElement
     /// </summary>
     /// <param name="IsRise">true for up volume</param>
     /// <returns></returns>
-    private IEnumerator FadeSound(bool IsRise)
-    {
-        
-        if (IsRise)
-        {
-            auSourse.Play();
-            while (auSourse.volume < MaxVolume)
-            {
-                auSourse.volume += MaxVolume /riseSpeed;
-                yield return null;
-            }
-            auSourse.volume = MaxVolume;
-        }
-        else
-        {
-            while (auSourse.volume > 0)
-            {
-                auSourse.volume -= MaxVolume / riseSpeed;
-                yield return null;
-            }
-            auSourse.volume = 0;
-            auSourse.Stop();
-        }
-    }
 
     protected override void OnMouseDown()
     {
@@ -113,18 +80,16 @@ public class Rune : DraggingElement
     public void Break()
     {
         breaking.SetActive(true);
+        if (Deleting.deleteMod) AudioManager.instance.PlaySoundOfBreak();
     }
 
     public void HideNormalRune()
     {
         curSprite.enabled = false;
         light.enabled = false;
-        if (auSourse != null)
+        if (clip != null)
         {
-            if (fading != null) StopCoroutine(fading);
-
-            fading = FadeSound(false);
-            StartCoroutine(fading);
+            AudioManager.instance.FadeSound(false, clip);
         }
     }
     private void ResetState()
