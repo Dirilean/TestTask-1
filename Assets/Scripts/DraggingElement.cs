@@ -18,7 +18,7 @@ public class DraggingElement : MonoBehaviour
         deltaForDrag = Mathf.Pow(deltaForDrag, 2);
     }
 
-    public void OnMouseDrag()
+    public virtual void OnMouseDrag()
     {
         mousePos = curCam.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
@@ -34,7 +34,7 @@ public class DraggingElement : MonoBehaviour
         isDrag = true;
     }
 
-    public void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
         lastMousePos = curCam.ScreenToWorldPoint(Input.mousePosition);
         lastMousePos.z = 0;

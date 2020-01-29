@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
-public class EffectsForRune : DraggingElement
+public class Rune : DraggingElement
 {
     ParticleSystem particle;
     Animator anim;
@@ -11,14 +12,24 @@ public class EffectsForRune : DraggingElement
     private float MaxVolume=0.5f;
     float riseSpeed = 10f;
     IEnumerator fading;
-
+    public GameObject breaking;
+    SpriteRenderer curSprite;
+    Light2D light;
     protected override void Awake()
     {
         base.Awake();
         particle = GetComponent<ParticleSystem>();
         anim = GetComponent<Animator>();
         auSourse = GetComponent<AudioSource>();
+        curSprite = GetComponent<SpriteRenderer>();
+        light = GetComponentInChildren<Light2D>();
     }
+
+    private void OnEnable()
+    {
+        ResetState();
+    }
+
     private void OnMouseEnter()
     {
         if (particle != null) particle.Play();
@@ -54,6 +65,7 @@ public class EffectsForRune : DraggingElement
     public override void OnMouseUp()
     {
         base.OnMouseUp();
+        if (breaking.activeInHierarchy) return;
         OnMouseEnter();
     }
 
@@ -85,5 +97,40 @@ public class EffectsForRune : DraggingElement
             auSourse.volume = 0;
             auSourse.Stop();
         }
+    }
+
+    protected override void OnMouseDown()
+    {
+        if (Deleting.deleteMod)
+        {
+            Break();
+        }
+    }
+
+    /// <summary>
+    /// break rune (deleting whith anim)
+    /// </summary>
+    public void Break()
+    {
+        breaking.SetActive(true);
+    }
+
+    public void HideNormalRune()
+    {
+        curSprite.enabled = false;
+        light.enabled = false;
+        if (auSourse != null)
+        {
+            if (fading != null) StopCoroutine(fading);
+
+            fading = FadeSound(false);
+            StartCoroutine(fading);
+        }
+    }
+    private void ResetState()
+    {
+        curSprite.enabled = true;
+        light.enabled = true;
+        breaking.SetActive(false);
     }
 }
