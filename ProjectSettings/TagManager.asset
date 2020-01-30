@@ -47,6 +47,9 @@ TagManager:
   - name: Runes
     uniqueID: 1927070333
     locked: 0
+  - name: Effects
+    uniqueID: 557499827
+    locked: 0
   - name: UI
     uniqueID: 2799931387
     locked: 0

@@ -13,6 +13,9 @@ public class Rune : DraggingElement
     public GameObject breaking;
     SpriteRenderer curSprite;
     Light2D light;
+
+    IMouseEventListener[] mouseListeners;
+
     protected override void Awake()
     {
         base.Awake();
@@ -20,6 +23,9 @@ public class Rune : DraggingElement
         anim = GetComponent<Animator>();
         curSprite = GetComponent<SpriteRenderer>();
         light = GetComponentInChildren<Light2D>();
+
+
+        mouseListeners = GetComponents<IMouseEventListener>();
     }
 
     private void OnEnable()
@@ -35,6 +41,13 @@ public class Rune : DraggingElement
         {
             AudioManager.instance.FadeSound(true, clip);
         }
+        if (mouseListeners != null && mouseListeners.Length != 0)
+        {
+            for (int i = 0; i < mouseListeners.Length; i++)
+            {
+                mouseListeners[i].Enter();
+            }
+        }
     }
 
     private void OnMouseExit()
@@ -44,6 +57,13 @@ public class Rune : DraggingElement
         if (clip != null)
         {
             AudioManager.instance.FadeSound(false, clip);
+        }
+        if (mouseListeners!=null && mouseListeners.Length!=0)
+        {
+            for (int i = 0; i < mouseListeners.Length; i++)
+            {
+                mouseListeners[i].Exit();
+            }
         }
     }
 
@@ -98,4 +118,10 @@ public class Rune : DraggingElement
         light.enabled = true;
         breaking.SetActive(false);
     }
+}
+
+public interface IMouseEventListener
+{
+    void Enter();
+    void Exit();
 }
