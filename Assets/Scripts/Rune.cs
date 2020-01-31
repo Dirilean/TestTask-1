@@ -52,7 +52,7 @@ public class Rune : DraggingElement
 
     private void OnMouseExit()
     {
-        if (particle != null) particle.Stop();
+        if (particle != null) {particle.Stop(); particle.Clear(); }
         if (anim != null) anim.SetBool("Stay", false);
         if (clip != null)
         {
