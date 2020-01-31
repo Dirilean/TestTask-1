@@ -65,4 +65,13 @@ public class AudioManager : MonoBehaviour
         effects.volume = maxEffectVolume;
         effects.PlayOneShot(breaking);
     }
+
+    public void BackGroundMute()
+    {
+        background.mute = !background.mute;
+    }
+    public void EffectsMute()
+    {
+        effects.mute = !effects.mute;
+    }
 }
