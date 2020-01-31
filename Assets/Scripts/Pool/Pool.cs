@@ -75,6 +75,7 @@ public class Pool : MonoBehaviour
         }
     }
 
+
     [System.Serializable]
     public class PoolObjectType
     {
@@ -85,3 +86,4 @@ public class Pool : MonoBehaviour
         public List<PoolObject> listPoolObjects=new List<PoolObject>();
     }
 }
+

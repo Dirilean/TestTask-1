@@ -117,6 +117,7 @@ public class Rune : DraggingElement
         curSprite.enabled = true;
         light.enabled = true;
         breaking.SetActive(false);
+        OnMouseExit();
     }
 }
 
