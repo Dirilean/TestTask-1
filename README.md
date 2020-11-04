@@ -1,5 +1,5 @@
 # TestTask-1
-<b>Выполнено</b>
+<b>Выполнено. Готовый проект: https://dirilean.github.io/TestTask-1/</b>
 
 Версия Unity для проекта: 2019.2.17f1
 
